@@ -1,12 +1,12 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
+import  Navbar    from 'react-bootstrap/Navbar'
 
 export default function Layout(){
     return (
         <>  
-            <header style = {{backgroundColor: 'blue'}}>
+            <Navbar bg="primary">
                 <h1>Phone books</h1>
-            </header>
+            </Navbar>
             <Outlet/>
         </>
     )
