@@ -1,16 +1,21 @@
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { Form, FormControl, FormLabel, FormGroup, Modal, ModalBody, ModalHeader, ModalTitle, Container, Button, FormText } from "react-bootstrap";
+import { Form, FormControl, FormLabel, FormGroup, Container, Button, FormText } from "react-bootstrap";
+
 
 function FormSingIn(){
     const {
          register, 
          handleSubmit, 
-         formState: { errors } 
-        } = useForm();
+         reset,
+         formState: { errors, isValid } 
+        } = useForm({
+            mode:"onBlur"
+        });
         
     const onSubmit = () =>{
-        console.log("to phone book ....")
+        console.log("to phone book ....");
+        reset()
     }
     return(
         <>
@@ -23,29 +28,28 @@ function FormSingIn(){
                         <FormLabel>Email adress:</FormLabel>
                         <FormControl
                             {...register('emailAdress',{
-                                required: "Must be filled",
+                                required: true,
+                                pattern: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/,
                             })}
                         ></FormControl> 
                         <FormText style = {{color:"red"}}>
-                            {errors?.emailAdress && <p>{errors?.emailAdress?.message || "Error!"}</p>}
+                            {errors?.emailAdress && <p>Must be filled.Invalid email.</p>}
                         </FormText>
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>Password:</FormLabel>
                         <FormControl
                              {...register('password',{
-                                required: "Must be filled",
-                                minLength: {
-                                    value:8,
-                                    message:"Minimum 8 symbols"
-                                }
+                                required: true,
+                                pattern: /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
                             })}
                         ></FormControl>
                         <FormText style = {{color:"red"}}>
-                            {errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
+                            {errors?.password &&
+                             <p>Must be filled.Minimum 8 symbols. Necessarily one number, one uppercase letter, one lowercase letter.</p>}
                         </FormText>
                     </FormGroup>
-                    <Button type = "submit" variant="outline-info" style = {{ marginTop:"5px"}}> Log In</Button>
+                    <Button type = "submit" disabled = {!isValid} variant="primary" style = {{ marginTop:"5px"}}> Log In</Button>
                 </Form>
             </Container>
                 
