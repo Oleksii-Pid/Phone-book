@@ -1,28 +1,35 @@
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormLabel, FormGroup, Container, Button, FormText } from "react-bootstrap";
-
+import { useAppSelector } from "src/features/hook/redux/redux";
+import { useDispatch } from "react-redux";
+import { setAuth } from 'src/features/redux/slices/authSlice';
+import { Navigate } from 'react-router-dom'
 
 function FormSingIn(){
+    const dispatch = useDispatch();
+    const auth = useAppSelector(state => state.auth.isAuth)
     const {
          register, 
          handleSubmit, 
-         reset,
          formState: { errors, isValid } 
         } = useForm({
-            mode:"onBlur"
+            mode:"onChange"
         });
         
-    const onSubmit = () =>{
-        console.log("to phone book ....");
-        reset()
+    const onSubmit = () => {
+        dispatch(setAuth(true));
     }
-    return(
+    return auth
+        ?
+        (<Navigate to ="/"/>) 
+        :
+        (
         <>
             <Helmet>
                 <title>Log In</title>
             </Helmet>
-            <Container style = {{ width:"18rem"}}>
+            <Container style = {{ width:"18rem" }}>
                 <Form onSubmit = {handleSubmit(onSubmit)}>
                     <FormGroup>
                         <FormLabel>Email adress:</FormLabel>
@@ -49,11 +56,13 @@ function FormSingIn(){
                              <p>Must be filled.Minimum 8 symbols. Necessarily one number, one uppercase letter, one lowercase letter.</p>}
                         </FormText>
                     </FormGroup>
-                    <Button type = "submit" disabled = {!isValid} variant="primary" style = {{ marginTop:"5px"}}> Log In</Button>
+                    <Button type = "submit"  disabled = {!isValid} variant="primary" style = {{ marginTop:"5px"}}>
+                         Log In
+                    </Button>
                 </Form>
             </Container>
                 
-        </>   
-    )
+        </>) 
 }
+
 export default FormSingIn
