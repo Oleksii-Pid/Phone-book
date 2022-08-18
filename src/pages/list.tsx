@@ -1,8 +1,14 @@
-import List from 'src/features/list/components/list-phones';
+import List from "src/features/list/components/list-phones";
+import { Helmet } from "react-helmet";
 
 const ListPhones = () => {
   return (
-    <List />
+    <>
+      <Helmet>
+        <title>List</title>
+      </Helmet>
+      <List />
+    </>
   );
 };
 

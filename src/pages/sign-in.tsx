@@ -1,8 +1,14 @@
-import SignIn from 'src/features/auth/components/form-sign-in';
+import SignIn from "src/features/auth/components/form-sign-in";
+import { Helmet } from "react-helmet";
 
 const SignInPage = () => {
   return (
-    <SignIn />
+    <>
+      <Helmet>
+        <title>Log In</title>
+      </Helmet>
+      <SignIn />
+    </>
   );
 };
 

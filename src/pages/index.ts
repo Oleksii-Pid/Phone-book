@@ -1,13 +1,7 @@
-import SignIn from './sign-in';
-import Add from './add';
-import Edit from './edit';
-import List from './list';
-import Phone from './phone';
+import SignInPage from "./sign-in";
+import AddPhone from "./add";
+import EditPhone from "./edit";
+import ListPhones from "./list";
+import Phone from "./phone";
 
-export {
-  Add,
-  SignIn,
-  Edit,
-  List,
-  Phone
-}
+export { AddPhone, SignInPage, EditPhone, ListPhones, Phone };

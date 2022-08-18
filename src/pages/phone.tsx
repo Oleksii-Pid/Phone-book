@@ -1,8 +1,14 @@
-import SelectPhone from 'src/features/phone/components/select-phone';
+import SelectPhone from "src/features/phone/components/select-phone";
+import { Helmet } from "react-helmet";
 
 const Phone = () => {
   return (
-    <SelectPhone />
+    <>
+      <Helmet>
+        <title>Phone</title>
+      </Helmet>
+      <SelectPhone />
+    </>
   );
 };
 

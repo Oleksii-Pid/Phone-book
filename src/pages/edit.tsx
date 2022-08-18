@@ -1,8 +1,14 @@
-import Edit from 'src/features/edit/components/edit-phone';
+import Edit from "src/features/edit/components/edit-phone";
+import { Helmet } from "react-helmet";
 
 const EditPhone = () => {
   return (
-    <Edit />
+    <>
+      <Helmet>
+        <title>Log In</title>
+      </Helmet>
+      <Edit />
+    </>
   );
 };
 

@@ -1,8 +1,14 @@
-import Add from 'src/features/add/components/add-phone';
+import Add from "src/features/add/components/add-phone";
+import { Helmet } from "react-helmet";
 
 const AddPhone = () => {
   return (
-    <Add />
+    <>
+      <Helmet>
+        <title>Add</title>
+      </Helmet>
+      <Add />
+    </>
   );
 };
 
