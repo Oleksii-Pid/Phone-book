@@ -1,28 +1,27 @@
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormLabel, FormGroup, Container, Button, FormText } from "react-bootstrap";
-import { useAppSelector } from "src/features/hook/redux/redux";
-import { useDispatch } from "react-redux";
-import { setAuth } from 'src/features/redux/slices/authSlice';
 import { Navigate } from 'react-router-dom'
+import useAuth from "../hooks/use-auth";
 
+type FormValues = {
+  password: string;
+  emailAddress: string;
+}
 function FormSingIn(){
-    const dispatch = useDispatch();
-    const auth = useAppSelector(state => state.auth.isAuth)
+    const {onLogin, isAuth} = useAuth();
     const {
-         register, 
-         handleSubmit, 
-         formState: { errors, isValid } 
-        } = useForm({
-            mode:"onChange"
+         register,
+         handleSubmit,
+         formState: { errors, isValid }
+        } = useForm<FormValues>({
+            mode:"onChange",
         });
-        
-    const onSubmit = () => {
-        dispatch(setAuth(true));
-    }
-    return auth
+
+    const onSubmit = () => onLogin();
+    return isAuth
         ?
-        (<Navigate to ="/"/>) 
+        (<Navigate to ="/"/>)
         :
         (
         <>
@@ -32,15 +31,15 @@ function FormSingIn(){
             <Container style = {{ width:"18rem" }}>
                 <Form onSubmit = {handleSubmit(onSubmit)}>
                     <FormGroup>
-                        <FormLabel>Email adress:</FormLabel>
+                        <FormLabel>Email address:</FormLabel>
                         <FormControl
-                            {...register('emailAdress',{
+                            {...register('emailAddress',{
                                 required: true,
                                 pattern: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/,
                             })}
-                        ></FormControl> 
+                        ></FormControl>
                         <FormText style = {{color:"red"}}>
-                            {errors?.emailAdress && <p>Must be filled.Invalid email.</p>}
+                            {errors?.emailAddress && <p>Must be filled.Invalid email.</p>}
                         </FormText>
                     </FormGroup>
                     <FormGroup>
@@ -61,8 +60,8 @@ function FormSingIn(){
                     </Button>
                 </Form>
             </Container>
-                
-        </>) 
+
+        </>)
 }
 
 export default FormSingIn

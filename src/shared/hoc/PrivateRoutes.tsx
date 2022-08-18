@@ -1,5 +1,5 @@
 import { useLocation, Outlet, Navigate } from "react-router";
-import { useAppSelector } from 'src/features/hook/redux/redux';
+import { useAppSelector } from 'src/store';
 
 const PrivateRoutes = () => {
     const auth = useAppSelector(state => state.auth.isAuth);

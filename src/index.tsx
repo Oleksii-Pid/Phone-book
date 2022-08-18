@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import AppRoutes from "./routes";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
-import store from './features/redux/index';
+import store from './store/index';
 
 
 const root = ReactDOM.createRoot(

@@ -1,18 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface PhoneState{
-    isAuth: boolean
-}
-    
-const initialState: PhoneState = {
+const initialState = {
     isAuth: false,
+    error: null as null | Error,
 }
+
+export type AuthState = typeof initialState;
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setAuth(state,action: PayloadAction<boolean>){
+        setAuth( state ,action: PayloadAction<boolean>){
             state.isAuth = action.payload
         }
     }

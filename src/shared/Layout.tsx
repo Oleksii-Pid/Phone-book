@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import  { Navbar, Nav, Button, NavbarBrand } from 'react-bootstrap';
-import { useAppSelector } from 'src/features/hook/redux/redux';
+import { useAppSelector } from 'src/store';
 import { useDispatch } from "react-redux";
-import { setAuth } from 'src/features/redux/slices/authSlice';
+import { setAuth } from 'src/features/auth/redux/slice';
 
 
 export default function Layout(){
@@ -18,7 +18,7 @@ export default function Layout(){
                     Phone books
                 </NavbarBrand>
                 {auth && (<Nav>
-                    <Button onClick = {onSingOut} variant="primery">Sing out</Button>
+                    <Button onClick = {onSingOut} variant="primary">Sing out</Button>
                 </Nav>)}
             </Navbar>
             <Outlet/>

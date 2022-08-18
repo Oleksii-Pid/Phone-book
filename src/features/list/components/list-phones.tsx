@@ -1,4 +1,4 @@
-import { useAppSelector } from 'src/features/hook/redux/redux';
+import { useAppSelector } from 'src/store';
 import {Navigate} from 'react-router-dom' 
 
 function ListPhones(){
