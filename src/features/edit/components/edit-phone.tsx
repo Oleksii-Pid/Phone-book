@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 
 function EditPhone() {
   const { id } = useParams();
+  console.log('hello');
   return (
     <>
       <p>Edit number {id}</p>
