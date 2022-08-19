@@ -67,15 +67,15 @@
     "lint-staged": "^13.0.3",
     "prettier": "2.7.1"
   },
-  "husky":{
+  "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.@(ts|tsx)": [
-      "npm lint",
-      "npm format"
+    "*.(js|jsx)": [
+      "npm run lint:write", 
+      "git add"
     ]
   }
 }
