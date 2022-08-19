@@ -51,12 +51,6 @@
       "last 1 safari version"
     ]
   },
-  "lint-staged": {
-    "*.@(ts|tsx)": [
-      "npm run lint",
-      "npm format"
-    ]
-  },
   "devDependencies": {
     "@types/react-helmet": "^6.1.5",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
