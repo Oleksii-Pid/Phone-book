@@ -54,7 +54,7 @@
   "lint-staged": {
     "*.@(ts|tsx)": [
       "npm run lint",
-      "npm format"
+      "git add"
     ]
   },
   "devDependencies": {
