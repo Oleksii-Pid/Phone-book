@@ -73,8 +73,8 @@
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
-      "npm run lint:fix",
-      "git add"
+      "yarn lint",
+      "yarn format"
     ]
   }
 }
