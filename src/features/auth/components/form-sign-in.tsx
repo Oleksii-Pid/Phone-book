@@ -6,7 +6,6 @@ type FormValues = {
   password: string;
   emailAddress: string;
 };
-const a = 5;
 function FormSingIn() {
   const { onLogin } = useAuth();
   const {
