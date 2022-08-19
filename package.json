@@ -72,7 +72,7 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
+    "*.@(ts|tsx)": [
       "npm run lint:fix",
       "git add"
     ]
