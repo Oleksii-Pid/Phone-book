@@ -1,13 +1,10 @@
-import { useForm } from 'react-hook-form';
-import { Form, FormControl, FormLabel, FormGroup, Container, Button, FormText } from 'react-bootstrap';
-import useAuth from '../hooks/use-auth';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Form, FormControl, FormLabel, FormGroup, Container, Button, FormText, Spinner } from 'react-bootstrap';
+import { useAuth } from 'src/hooks';
+import { FormValues } from '../types';
 
-type FormValues = {
-  password: string;
-  emailAddress: string;
-};
 function FormSingIn() {
-  const { onLogin } = useAuth();
+  const { onLogin, isLoading } = useAuth();
   const {
     register,
     handleSubmit,
@@ -16,7 +13,8 @@ function FormSingIn() {
     mode: 'onChange',
   });
 
-  const onSubmit = () => onLogin();
+  const onSubmit: SubmitHandler<FormValues> = userData => onLogin(userData);
+
   return (
     <>
       <Container style={{ width: '18rem' }}>
@@ -24,6 +22,7 @@ function FormSingIn() {
           <FormGroup>
             <FormLabel>Email address:</FormLabel>
             <FormControl
+              type="email"
               {...register('emailAddress', {
                 required: true,
                 pattern: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/,
@@ -34,6 +33,7 @@ function FormSingIn() {
           <FormGroup>
             <FormLabel>Password:</FormLabel>
             <FormControl
+              type="password"
               {...register('password', {
                 required: true,
                 pattern: /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
@@ -48,6 +48,7 @@ function FormSingIn() {
             </FormText>
           </FormGroup>
           <Button type="submit" disabled={!isValid} variant="primary" style={{ marginTop: '5px' }}>
+            {isLoading && <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />}
             Log In
           </Button>
         </Form>

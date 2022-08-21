@@ -1,15 +1,15 @@
-import SelectPhone from "src/features/phone/components/select-phone";
-import { Helmet } from "react-helmet";
+import Phone from 'src/features/phone/components/phone';
+import { Helmet } from 'react-helmet';
 
-const Phone = () => {
+const CurrentPhone = () => {
   return (
     <>
       <Helmet>
         <title>Phone</title>
       </Helmet>
-      <SelectPhone />
+      <Phone />
     </>
   );
 };
 
-export default Phone;
+export default CurrentPhone;

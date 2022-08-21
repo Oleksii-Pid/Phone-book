@@ -2,9 +2,8 @@ import { Navigate, Outlet } from 'react-router';
 import { useAuth } from 'src/hooks';
 import ROUTES from './constants';
 
-const PrivateRoutes = () => {
+const PublicRoutes = () => {
   const { isAuth } = useAuth();
-  return isAuth ? <Outlet /> : <Navigate to={ROUTES.login} />;
+  return isAuth ? <Navigate to={ROUTES.main} /> : <Outlet />;
 };
-
-export default PrivateRoutes;
+export default PublicRoutes;
