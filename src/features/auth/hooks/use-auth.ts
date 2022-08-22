@@ -13,7 +13,7 @@ export default function useAuth() {
     dispatch(updateUserProfileThunk(data));
   }, [dispatch]);
 
-  const outLogin = useCallback(() => {
+  const onLogout = useCallback(() => {
     clearLocalStorage(STORAGE_KEYS.token)
     dispatch(removeToken());
   }, [dispatch]);
@@ -22,12 +22,11 @@ export default function useAuth() {
     dispatch(setToken(email));
   }, [dispatch]);
 
-  
  
   return {
     ...state,
     onLogin,
-    outLogin,
+    onLogout,
     onTokenLogin
   };
 }

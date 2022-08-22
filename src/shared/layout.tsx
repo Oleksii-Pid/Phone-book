@@ -4,7 +4,7 @@ import { useAuth } from 'src/hooks'
 import { useEffect } from 'react'
 
 function Layout() {
-  const { isAuth, outLogin, onTokenLogin } = useAuth()
+  const { isAuth, onLogout, onTokenLogin } = useAuth()
 
   useEffect(() => {
     const email = localStorage.getItem('token')
@@ -13,9 +13,8 @@ function Layout() {
     }
   }, [onTokenLogin])
 
-  const onClickOut = () => {
-    outLogin()
-  }
+  const onClickOut = () => onLogout();
+
   return (
     <>
       <Navbar
