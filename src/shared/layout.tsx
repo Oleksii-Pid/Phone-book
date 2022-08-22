@@ -1,17 +1,17 @@
-import { Outlet } from 'react-router-dom'
-import { Navbar, Nav, Button, NavbarBrand } from 'react-bootstrap'
-import { useAuth } from 'src/hooks'
-import { useEffect } from 'react'
+import { Outlet } from 'react-router-dom';
+import { Navbar, Nav, Button, NavbarBrand } from 'react-bootstrap';
+import { useAuth } from 'src/hooks';
+import { useEffect } from 'react';
 
 function Layout() {
-  const { isAuth, onLogout, onTokenLogin } = useAuth()
+  const { isAuth, onLogout, onTokenLogin } = useAuth();
 
   useEffect(() => {
-    const email = localStorage.getItem('token')
+    const email = localStorage.getItem('token');
     if (email) {
-      onTokenLogin(email)
+      onTokenLogin(email);
     }
-  }, [onTokenLogin])
+  }, [onTokenLogin]);
 
   const onClickOut = () => onLogout();
 
@@ -38,6 +38,6 @@ function Layout() {
       </Navbar>
       <Outlet />
     </>
-  )
+  );
 }
-export default Layout
+export default Layout;

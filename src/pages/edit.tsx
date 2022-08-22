@@ -1,5 +1,5 @@
-import Edit from 'src/features/edit-phone/components/edit-phone'
-import { Helmet } from 'react-helmet'
+import Edit from 'src/features/edit-phone/components/edit-phone';
+import { Helmet } from 'react-helmet';
 
 const EditPhone = () => {
   return (
@@ -9,7 +9,7 @@ const EditPhone = () => {
       </Helmet>
       <Edit />
     </>
-  )
-}
+  );
+};
 
-export default EditPhone
+export default EditPhone;

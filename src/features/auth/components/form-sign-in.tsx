@@ -1,5 +1,14 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Form, FormControl, FormLabel, FormGroup, Container, Button, FormText, Spinner } from 'react-bootstrap';
+import {
+  Form,
+  FormControl,
+  FormLabel,
+  FormGroup,
+  Container,
+  Button,
+  FormText,
+  Spinner,
+} from 'react-bootstrap';
 import { useAuth } from 'src/hooks';
 import { FormValues } from '../types';
 
@@ -13,7 +22,7 @@ function FormSingIn() {
     mode: 'onChange',
   });
 
-  const onSubmit: SubmitHandler<FormValues> = userData => onLogin(userData);
+  const onSubmit: SubmitHandler<FormValues> = (userData) => onLogin(userData);
 
   return (
     <>
@@ -22,18 +31,20 @@ function FormSingIn() {
           <FormGroup>
             <FormLabel>Email address:</FormLabel>
             <FormControl
-              type="email"
+              type='email'
               {...register('emailAddress', {
                 required: true,
                 pattern: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/,
               })}
             ></FormControl>
-            <FormText style={{ color: 'red' }}>{errors?.emailAddress && <p>Must be filled.Invalid email.</p>}</FormText>
+            <FormText style={{ color: 'red' }}>
+              {errors?.emailAddress && <p>Must be filled.Invalid email.</p>}
+            </FormText>
           </FormGroup>
           <FormGroup>
             <FormLabel>Password:</FormLabel>
             <FormControl
-              type="password"
+              type='password'
               {...register('password', {
                 required: true,
                 pattern: /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
@@ -42,13 +53,16 @@ function FormSingIn() {
             <FormText style={{ color: 'red' }}>
               {errors?.password && (
                 <p>
-                  Must be filled.Minimum 8 symbols. Necessarily one number, one uppercase letter, one lowercase letter.
+                  Must be filled.Minimum 8 symbols. Necessarily one number, one uppercase letter,
+                  one lowercase letter.
                 </p>
               )}
             </FormText>
           </FormGroup>
-          <Button type="submit" disabled={!isValid} variant="primary" style={{ marginTop: '5px' }}>
-            {isLoading && <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />}
+          <Button type='submit' disabled={!isValid} variant='primary' style={{ marginTop: '5px' }}>
+            {isLoading && (
+              <Spinner as='span' animation='border' size='sm' role='status' aria-hidden='true' />
+            )}
             Log In
           </Button>
         </Form>

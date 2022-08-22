@@ -1,5 +1,5 @@
-import SignIn from "src/features/auth/components/form-sign-in";
-import { Helmet } from "react-helmet";
+import SignIn from 'src/features/auth/components/form-sign-in';
+import { Helmet } from 'react-helmet';
 
 const SignInPage = () => {
   return (
