@@ -1,13 +1,19 @@
-import { Link } from "react-router-dom";
-import ROUTES from "src/routes/constants";
+import { Link } from 'react-router-dom';
+import ListGroup from 'react-bootstrap/ListGroup';
+import ROUTES from 'src/routes/constants';
+import useList from 'src/features/list-phones/hooks/use-list';
 
 function ListPhones() {
+  const { listPhones } = useList();
   return (
-    <>
-      <Link to={ROUTES.dynamic.id("3")}> Phone 3</Link>
-      <Link to={ROUTES.add}> Add</Link>
-      <Link to={ROUTES.dynamic.edit("4")}> Edit 3</Link>
-    </>
+    <ListGroup>
+      {listPhones.map((phone) => (
+        <ListGroup.Item key={phone.id}>
+          <Link to={ROUTES.dynamic.id(`${phone.id}`)}>{phone.name.first}</Link>
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
   );
 }
+
 export default ListPhones;
