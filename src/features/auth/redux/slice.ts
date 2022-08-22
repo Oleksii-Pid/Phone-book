@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {saveTokenThunk} from 'src/api/save-token'
+import { createSlice } from '@reduxjs/toolkit';
+import { saveTokenThunk } from 'src/api/save-token';
 
 const initialState = {
   isAuth: false,
@@ -11,16 +11,16 @@ const initialState = {
 export type AuthState = typeof initialState;
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
-    setToken(state, action){
-      state.email = action.payload,
-      state.isAuth = true
+    setToken(state, action) {
+      state.email = action.payload;
+      state.isAuth = true;
     },
     removeToken(state){
-      state.email = '',
-      state.isAuth = false
+      state.email = '';
+      state.isAuth = false;
     }
   },
   extraReducers: builder => {
@@ -31,8 +31,8 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isAuth = true;
       state.email = payload.emailAddress;
-    })
-},
+    });
+  },
 });
-export const {setToken, removeToken} = authSlice.actions
+export const { setToken, removeToken } = authSlice.actions;
 export default authSlice.reducer;

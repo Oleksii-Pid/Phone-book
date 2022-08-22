@@ -1,5 +1,5 @@
-import Add from 'src/features/add-phone/components/add-phone'
-import { Helmet } from 'react-helmet'
+import Add from 'src/features/add-phone/components/add-phone';
+import { Helmet } from 'react-helmet';
 
 const AddPhone = () => {
   return (
@@ -9,7 +9,7 @@ const AddPhone = () => {
       </Helmet>
       <Add />
     </>
-  )
-}
+  );
+};
 
-export default AddPhone
+export default AddPhone;

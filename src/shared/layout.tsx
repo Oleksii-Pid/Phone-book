@@ -2,10 +2,8 @@ import { Outlet } from 'react-router-dom';
 import { Navbar, Nav, Button, NavbarBrand } from 'react-bootstrap';
 import { useAuth } from 'src/hooks';
 import { useEffect } from 'react';
-import useList from 'src/features/list-phones/hooks/use-list';
 
 function Layout() {
-  const { uploadPhones } = useList();
   const { isAuth, onLogout, onTokenLogin } = useAuth();
 
   useEffect(() => {
@@ -13,12 +11,9 @@ function Layout() {
     if (email) {
       onTokenLogin(email);
     }
-    uploadPhones();
   }, [onTokenLogin]);
 
-  const onClickOut = () => {
-    onLogout();
-  };
+  const onClickOut = () => onLogout();
   return (
     <>
       <Navbar
@@ -31,7 +26,7 @@ function Layout() {
           justifyContent: 'space-between',
         }}
       >
-        <NavbarBrand>Phone books</NavbarBrand>
+        <NavbarBrand>Phone books </NavbarBrand>
         {isAuth && (
           <Nav>
             <Button onClick={onClickOut} variant='primary'>
