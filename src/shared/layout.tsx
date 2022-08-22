@@ -27,7 +27,7 @@ function Layout() {
           justifyContent: 'space-between',
         }}
       >
-        <NavbarBrand>Phone books</NavbarBrand>
+        <NavbarBrand>Phone books </NavbarBrand>
         {isAuth && (
           <Nav>
             <Button onClick={onClickOut} variant='primary'>
