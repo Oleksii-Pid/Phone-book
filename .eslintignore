@@ -1,0 +1,9 @@
+node_modules/*
+build/*
+public/workbox-*.js
+public/workbox-*.js.map
+public/sw.js
+public/sw.js.map
+src/assets
+src/temp/*
+src/react-app-env.d.ts
