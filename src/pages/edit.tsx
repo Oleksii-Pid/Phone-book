@@ -1,15 +1,15 @@
-import Edit from 'src/features/edit-phone/components/edit-phone';
+import EditPhone from 'src/features/edit-phone/components/edit-phone';
 import { Helmet } from 'react-helmet';
 
-const EditPhone = () => {
+const Edit = () => {
   return (
     <>
       <Helmet>
         <title>Log In</title>
       </Helmet>
-      <Edit />
+      <EditPhone />
     </>
   );
 };
 
-export default EditPhone;
+export default Edit;

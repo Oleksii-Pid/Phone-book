@@ -1,15 +1,15 @@
-import Add from 'src/features/add-phone/components/add-phone';
+import AddPhone from 'src/features/add-phone/components/add-phone';
 import { Helmet } from 'react-helmet';
 
-const AddPhone = () => {
+const Add = () => {
   return (
     <>
       <Helmet>
         <title>Add</title>
       </Helmet>
-      <Add />
+      <AddPhone />
     </>
   );
 };
 
-export default AddPhone;
+export default Add;

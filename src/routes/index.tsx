@@ -10,11 +10,11 @@ export default function AppRoutes() {
     <Routes>
       <Route element={<Layout />}>
         <Route element={<PrivateRoutes />}>
-          <Route index element={<Pages.ListPhones />} />
+          <Route index element={<Pages.List />} />
           <Route path={ROUTES.dynamic.id()} element={<Pages.CurrentPhone />} />
-          <Route path={ROUTES.dynamic.edit()} element={<Pages.EditPhone />} />
-          <Route path={ROUTES.add} element={<Pages.AddPhone />} />
-          <Route path={ROUTES.another} element={<Pages.ListPhones />} />
+          <Route path={ROUTES.dynamic.edit()} element={<Pages.Edit />} />
+          <Route path={ROUTES.add} element={<Pages.Add />} />
+          <Route path={ROUTES.another} element={<Pages.List />} />
         </Route>
         <Route element={<PublicRoutes />}>
           <Route path={ROUTES.login} element={<Pages.SignInPage />} />

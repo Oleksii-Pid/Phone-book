@@ -34,7 +34,7 @@ function FormSingIn() {
               type='email'
               {...register('emailAddress', {
                 required: true,
-                pattern: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/,
+                pattern: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
               })}
             ></FormControl>
             <FormText style={{ color: 'red' }}>
