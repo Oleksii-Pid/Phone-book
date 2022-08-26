@@ -1,4 +1,5 @@
-import { Container } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
+import ROUTES from 'src/routes/constants';
 
 type TError = {
   nameError: string;
@@ -6,9 +7,13 @@ type TError = {
 
 function ErrorPage(prop: TError) {
   return (
-    <Container>
-      <h1 style={{ color: 'red' }}>{prop.nameError}</h1>
-    </Container>
+    <Alert
+      variant='danger'
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
+      <Alert.Heading>{prop.nameError}</Alert.Heading>
+      <Alert.Link href={ROUTES.main}>Go to main page</Alert.Link>
+    </Alert>
   );
 }
 export default ErrorPage;
