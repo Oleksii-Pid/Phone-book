@@ -6,15 +6,15 @@ import ROUTES from 'src/routes/constants';
 
 function Layout() {
   const { isAuth, onLogout, onTokenLogin } = useAuth();
-  const { uploadPhones } = useList();
+  const { fetchPhones } = useList();
 
   useEffect(() => {
     const email = localStorage.getItem('token');
     if (email) {
       onTokenLogin(email);
     }
-    uploadPhones();
-  }, [onTokenLogin]);
+    fetchPhones();
+  }, [onTokenLogin, fetchPhones]);
 
   const onClickOut = () => onLogout();
   return (

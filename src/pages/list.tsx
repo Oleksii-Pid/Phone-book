@@ -1,13 +1,21 @@
 import ListPhones from 'src/features/list-phones';
 import { Helmet } from 'react-helmet';
+import { useList } from 'src/hooks';
 
 const List = () => {
-  return (
+  const { isLoading, error } = useList();
+  return !isLoading ? (
+    <>
+      <Helmet>{error ? <title>{error}</title> : <title>List</title>}</Helmet>
+      <ListPhones />
+    </>
+  ) : (
     <>
       <Helmet>
-        <title>List</title>
+        <title>Loading...</title>
       </Helmet>
-      <ListPhones />
+
+      <h1>Loading...</h1>
     </>
   );
 };

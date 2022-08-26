@@ -1,10 +1,13 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import GroupsPhones from './components/groups-phones';
+import useList from './hooks/use-list';
 function ListPhones() {
-  
-  return (
+  const { error } = useList();
+  return error ? (
+    <h1 style={{ color: 'red' }}>{error}</h1>
+  ) : (
     <ListGroup>
-      <GroupsPhones/>
+      <GroupsPhones />
     </ListGroup>
   );
 }

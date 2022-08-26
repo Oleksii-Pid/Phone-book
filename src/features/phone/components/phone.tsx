@@ -1,69 +1,63 @@
-import { useParams } from 'react-router-dom';
-import { TPhone } from 'src/api/upload-phones';
-import useList from 'src/features/list-phones/hooks/use-list';
 import { Container, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import usePhone from 'src/features/phone/hooks/usePhone';
+import ROUTES from 'src/routes/constants';
 
 function Phone() {
-  const { listPhones } = useList();
-  const { id } = useParams();
-  const {
-    isActive,
-    age,
-    name: { first, last },
-    company,
-    email,
-    phone,
-    address,
-    registered,
-  }: TPhone = listPhones.find((phone) => phone.id == id) as TPhone;
+  const { phone, error } = usePhone();
 
-  const backgroundColor = isActive ? 'rgb(193, 236, 193)' : 'rgb(241, 200, 200)';
+  const backgroundColor = phone.isActive ? 'rgb(193, 236, 193)' : 'rgb(241, 200, 200)';
 
-  return (
+  return !error ? (
     <Container style={{ width: '50%', backgroundColor }}>
       <h1>
-        {first} {last}{' '}
+        {phone.name.first} {phone.name.last}{' '}
       </h1>
       <span style={{ fontStyle: 'italic', fontWeight: 'bold' }}>
-        {isActive ? 'Active' : 'Not Active'}
+        {phone.isActive ? 'Active' : 'Not Active'}
       </span>
       <Table striped bordered hover>
         <tbody>
           <tr>
             <td>First Name</td>
-            <td>{first}</td>
+            <td>{phone.name.first}</td>
           </tr>
           <tr>
             <td>Last Name</td>
-            <td>{last}</td>
+            <td>{phone.name.last}</td>
           </tr>
           <tr>
             <td>Age</td>
-            <td>{age}</td>
+            <td>{phone.age}</td>
           </tr>
           <tr>
             <td>Company</td>
-            <td>{company}</td>
+            <td>{phone.company}</td>
           </tr>
           <tr>
             <td>Phone</td>
-            <td>{phone}</td>
+            <td>{phone.phone}</td>
           </tr>
           <tr>
             <td>Email</td>
-            <td>{email}</td>
+            <td>{phone.email}</td>
           </tr>
           <tr>
             <td>Address</td>
-            <td>{address}</td>
+            <td>{phone.address}</td>
           </tr>
           <tr>
             <td>Registered</td>
-            <td>{registered}</td>
+            <td>{phone.registered}</td>
           </tr>
         </tbody>
       </Table>
     </Container>
+  ) : (
+    <>
+      <h1 style={{ color: 'red' }}>{error}</h1>
+      <Link to={ROUTES.main}>Go to main page</Link>
+    </>
   );
 }
 export default Phone;

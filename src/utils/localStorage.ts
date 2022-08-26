@@ -1,6 +1,6 @@
-export enum STORAGE_KEYS  { 
-    token = 'token',
-    phones = 'phones',
+export enum STORAGE_KEYS {
+  token = 'token',
+  phones = 'phones',
 }
 
 export const getLocalStorage = (key: STORAGE_KEYS) => {
@@ -13,13 +13,12 @@ export const clearLocalStorage = (key: STORAGE_KEYS) => {
   localStorage.removeItem(STORAGE_KEYS[key]);
 };
 
-export const saveTokenInLocalStorage = (token:string) =>{
-   token && setLocalStorage(STORAGE_KEYS.token, token)
-}
+export const saveTokenInLocalStorage = (token: string) => {
+  token && setLocalStorage(STORAGE_KEYS.token, token);
+};
 
-export const savePhonesInLocalStorage = (phones) =>{
-   phones && setLocalStorage(STORAGE_KEYS.phones, JSON.stringify(phones))
-}
+export const savePhonesInLocalStorage = (phones) => {
+  phones && setLocalStorage(STORAGE_KEYS.phones, JSON.stringify(phones));
+};
 
 export const getTokenWithLocalStorage = () => getLocalStorage(STORAGE_KEYS.token);
-

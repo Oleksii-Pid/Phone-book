@@ -3,8 +3,8 @@ import { useAuth } from 'src/hooks';
 import ROUTES from './constants';
 
 const PrivateRoutes = () => {
-  const { isAuth } = useAuth();
-  return isAuth ? <Outlet /> : <Navigate to={ROUTES.login} />;
+  const { isAuth, isAuthReady } = useAuth();
+  return isAuthReady ? isAuth ? <Outlet /> : <Navigate to={ROUTES.login} /> : <h1>Loading</h1>;
 };
 
 export default PrivateRoutes;
