@@ -1,6 +1,7 @@
 import { useAppSelector, useAppDispatch } from 'src/store';
 import { useCallback } from 'react';
-import { TPhone, fetchListPhonesThunk } from 'src/api/fetch-list-phones';
+import { fetchListPhonesThunk } from 'src/api/fetch-list-phones';
+import { TPhone } from 'src/types';
 import { setListPhones } from 'src/features/list-phones/redux/slice';
 
 function useList() {

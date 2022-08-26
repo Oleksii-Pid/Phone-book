@@ -1,6 +1,6 @@
 import { Container, Table } from 'react-bootstrap';
 import ErrorPage from 'src/features/error';
-import usePhone from 'src/features/phone/hooks/usePhone';
+import { usePhone } from 'src/hooks';
 
 function Phone() {
   const { phone, error } = usePhone();

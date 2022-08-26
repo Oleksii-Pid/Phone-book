@@ -5,7 +5,7 @@ import ROUTES from 'src/routes/constants';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { Button, ButtonGroup } from 'react-bootstrap';
-import { TPhone } from 'src/api/fetch-list-phones';
+import { TPhone } from 'src/types';
 
 function GroupsPhones() {
   const { listPhones, saveChangedListPhones } = useList();

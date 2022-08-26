@@ -1,19 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-export type TPhone = {
-  id: string;
-  isActive: boolean;
-  age?: number;
-  name: {
-    first: string;
-    last: string;
-  };
-  company?: string;
-  email?: string;
-  phone: string;
-  address?: string;
-  registered: string;
-};
+import { TPhone } from 'src/types';
 
 export const fetchPhoneThunk = createAsyncThunk<TPhone, string, { rejectValue: string }>(
   'fetch_phone',

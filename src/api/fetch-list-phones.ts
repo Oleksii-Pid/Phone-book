@@ -1,20 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { sortListPhones } from 'src/api/sort-phones';
-
-export type TPhone = {
-  id: string;
-  isActive: boolean;
-  age?: number;
-  name: {
-    first: string;
-    last: string;
-  };
-  company?: string;
-  email?: string;
-  phone: string;
-  address?: string;
-  registered: string;
-};
+import { TPhone } from 'src/types';
 
 export const fetchListPhonesThunk = createAsyncThunk<TPhone[], undefined, { rejectValue: string }>(
   'fetch_list_phones',

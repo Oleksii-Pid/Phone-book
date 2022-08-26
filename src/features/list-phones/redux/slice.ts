@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchListPhonesThunk, TPhone } from 'src/api/fetch-list-phones';
+import { fetchListPhonesThunk } from 'src/api/fetch-list-phones';
+import { TPhone } from 'src/types';
 
 type PhoneState = {
   listPhones: TPhone[];
