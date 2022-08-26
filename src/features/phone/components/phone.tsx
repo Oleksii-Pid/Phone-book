@@ -1,7 +1,6 @@
 import { Container, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import ErrorPage from 'src/features/error';
 import usePhone from 'src/features/phone/hooks/usePhone';
-import ROUTES from 'src/routes/constants';
 
 function Phone() {
   const { phone, error } = usePhone();
@@ -54,10 +53,7 @@ function Phone() {
       </Table>
     </Container>
   ) : (
-    <>
-      <h1 style={{ color: 'red' }}>{error}</h1>
-      <Link to={ROUTES.main}>Go to main page</Link>
-    </>
+    <ErrorPage nameError={error} />
   );
 }
 export default Phone;

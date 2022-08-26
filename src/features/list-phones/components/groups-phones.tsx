@@ -5,11 +5,10 @@ import ROUTES from 'src/routes/constants';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { Button, ButtonGroup } from 'react-bootstrap';
-import { IoMdAddCircleOutline } from 'react-icons/io';
 import { TPhone } from 'src/api/fetch-list-phones';
 
 function GroupsPhones() {
-  const { listPhones, error, saveChangedListPhones } = useList();
+  const { listPhones, saveChangedListPhones } = useList();
   const nameGroups: string[] = [];
 
   const onDeletePhone = (id: string) => {
@@ -58,17 +57,6 @@ function GroupsPhones() {
       </ListGroup>
     </ListGroup.Item>
   ));
-  return !error ? (
-    <>
-      <Link style={{ margin: 'auto', opacity: '0.5' }} to={ROUTES.add}>
-        <IoMdAddCircleOutline size='5rem' />
-      </Link>
-      {groupPhones}
-    </>
-  ) : (
-    <>
-      <h1 style={{ color: 'red' }}>{error}</h1>
-    </>
-  );
+  return <>{groupPhones}</>;
 }
 export default GroupsPhones;
