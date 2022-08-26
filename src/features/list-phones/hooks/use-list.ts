@@ -18,11 +18,15 @@ function useList() {
     },
     [dispatch],
   );
+  const onRemovePhone = (id: string) => {
+    saveChangedListPhones(state.listPhones.filter((p) => p.id !== id));
+  };
 
   return {
     ...state,
     fetchPhones,
     saveChangedListPhones,
+    onRemovePhone,
   };
 }
 export default useList;

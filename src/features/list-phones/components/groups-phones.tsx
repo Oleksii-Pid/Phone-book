@@ -8,13 +8,8 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import { TPhone } from 'src/types';
 
 function GroupsPhones() {
-  const { listPhones, saveChangedListPhones } = useList();
+  const { listPhones, onRemovePhone } = useList();
   const nameGroups: string[] = [];
-
-  const onDeletePhone = (id: string) => {
-    const changeListPhones = listPhones.filter((p) => p.id !== id);
-    saveChangedListPhones(changeListPhones);
-  };
 
   listPhones.map((phone) => {
     if (!nameGroups.includes(phone.name.first[0])) {
@@ -43,7 +38,7 @@ function GroupsPhones() {
                   </Button>
                   <Button
                     onClick={() => {
-                      onDeletePhone(phone.id);
+                      onRemovePhone(phone.id);
                     }}
                     variant='danger'
                   >
