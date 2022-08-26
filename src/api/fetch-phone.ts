@@ -12,11 +12,11 @@ export const fetchPhoneThunk = createAsyncThunk<TPhone, string, { rejectValue: s
       const phones = await response.json();
       const phone = phones.find((p: TPhone) => p.id === id);
       if (!phone) {
-        return thunkAPI.rejectWithValue('Phone not found!');
+        return thunkAPI.rejectWithValue('Phone is not found!');
       }
       return phone;
     } catch (error) {
-      return thunkAPI.rejectWithValue('Error server!');
+      return thunkAPI.rejectWithValue('Page is not found!');
     }
   },
 );

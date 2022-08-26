@@ -25,26 +25,34 @@ function Phone() {
             <td>Last Name</td>
             <td>{phone.name.last}</td>
           </tr>
-          <tr>
-            <td>Age</td>
-            <td>{phone.age}</td>
-          </tr>
-          <tr>
-            <td>Company</td>
-            <td>{phone.company}</td>
-          </tr>
+          {phone.age && (
+            <tr>
+              <td>Age</td>
+              <td>{phone.age}</td>
+            </tr>
+          )}
+          {phone.company && (
+            <tr>
+              <td>Company</td>
+              <td>{phone.company}</td>
+            </tr>
+          )}
           <tr>
             <td>Phone</td>
             <td>{phone.phone}</td>
           </tr>
-          <tr>
-            <td>Email</td>
-            <td>{phone.email}</td>
-          </tr>
-          <tr>
-            <td>Address</td>
-            <td>{phone.address}</td>
-          </tr>
+          {phone.email && (
+            <tr>
+              <td>Email</td>
+              <td>{phone.email}</td>
+            </tr>
+          )}
+          {phone.registered && (
+            <tr>
+              <td>Address</td>
+              <td>{phone.address}</td>
+            </tr>
+          )}
           <tr>
             <td>Registered</td>
             <td>{phone.registered}</td>

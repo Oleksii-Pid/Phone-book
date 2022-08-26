@@ -13,7 +13,7 @@ export const fetchListPhonesThunk = createAsyncThunk<TPhone[], undefined, { reje
       const phones = await response.json();
       return sortListPhones(phones);
     } catch (error) {
-      return thunkAPI.rejectWithValue('Server error!');
+      return thunkAPI.rejectWithValue('Page is not found!');
     }
   },
 );

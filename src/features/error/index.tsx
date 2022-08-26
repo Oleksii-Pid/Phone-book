@@ -12,7 +12,7 @@ function ErrorPage(prop: TError) {
       style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
       <Alert.Heading>{prop.nameError}</Alert.Heading>
-      {prop.nameError == 'Phone not found!' && (
+      {(prop.nameError == 'Phone is not found!' || prop.nameError == 'Page is not found!') && (
         <Alert.Link href={ROUTES.main}>Go to main page</Alert.Link>
       )}
     </Alert>
