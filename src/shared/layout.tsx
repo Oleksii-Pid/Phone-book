@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import ROUTES from 'src/routes/constants';
 
 function Layout() {
-  const { isAuth, onLogout, onTokenLogin } = useAuth();
+  const { isAuth, onLogout, onTokenLogin, onAuthReady } = useAuth();
   const { fetchPhones } = useList();
 
   useEffect(() => {
@@ -13,8 +13,9 @@ function Layout() {
     if (email) {
       onTokenLogin(email);
     }
+    onAuthReady();
     fetchPhones();
-  }, [onTokenLogin, fetchPhones]);
+  }, [onTokenLogin, onAuthReady, fetchPhones]);
 
   const onClickOut = () => onLogout();
   return (

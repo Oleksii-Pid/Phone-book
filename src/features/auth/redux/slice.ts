@@ -18,11 +18,13 @@ export const authSlice = createSlice({
     setToken(state, action) {
       state.email = action.payload;
       state.isAuth = true;
-      state.isAuthReady = true;
     },
     removeToken(state) {
       state.email = '';
       state.isAuth = false;
+    },
+    setAuthReady(state) {
+      state.isAuthReady = true;
     },
   },
   extraReducers: (builder) => {
@@ -40,5 +42,5 @@ export const authSlice = createSlice({
     });
   },
 });
-export const { setToken, removeToken } = authSlice.actions;
+export const { setToken, removeToken, setAuthReady } = authSlice.actions;
 export default authSlice.reducer;

@@ -2,7 +2,7 @@ import { useAppSelector, useAppDispatch } from 'src/store';
 import { saveTokenThunk } from 'src/api/save-token';
 import { useCallback } from 'react';
 import { FormValues } from '../types';
-import { setToken, removeToken } from 'src/features/auth/redux/slice';
+import { setToken, removeToken, setAuthReady } from 'src/features/auth/redux/slice';
 import { clearLocalStorage, STORAGE_KEYS } from 'src/utils/localStorage';
 
 export default function useAuth() {
@@ -15,6 +15,9 @@ export default function useAuth() {
     },
     [dispatch],
   );
+  const onAuthReady = useCallback(() => {
+    dispatch(setAuthReady());
+  }, [dispatch]);
 
   const onLogout = useCallback(() => {
     clearLocalStorage(STORAGE_KEYS.token);
@@ -33,5 +36,6 @@ export default function useAuth() {
     onLogin,
     onLogout,
     onTokenLogin,
+    onAuthReady,
   };
 }
