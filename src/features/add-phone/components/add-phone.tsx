@@ -110,10 +110,10 @@ function AddPhone() {
           <FormLabel>Phone*</FormLabel>
           <Form.Control
             as={InputMask}
-            mask='+1 (999) 999-99 99'
+            mask='+1 (999) 999-9999'
             alwaysShowMask
             {...register('phone', {
-              pattern: /^\+1\s\(\d{3}\)\s\d{3}-\d{2}\s\d{2}$/,
+              pattern: /^\+1\s\(\d{3}\)\s\d{3}-\d{4}$/,
             })}
           />
           <FormText style={{ color: 'red' }}>

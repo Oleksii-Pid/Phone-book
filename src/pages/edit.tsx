@@ -1,4 +1,4 @@
-import EditPhone from 'src/features/edit-phone/components/edit-phone';
+import EditPhone from 'src/features/edit-phone';
 import { Helmet } from 'react-helmet';
 
 const Edit = () => {
