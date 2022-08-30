@@ -12,7 +12,9 @@ function Layout() {
     const email = localStorage.getItem('token');
     if (email) {
       onTokenLogin(email);
+      onAuthReady();
     }
+
     onAuthReady();
     fetchPhones();
   }, [onTokenLogin, onAuthReady, fetchPhones]);

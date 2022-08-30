@@ -15,13 +15,6 @@ export const listSlice = createSlice({
     setListPhones(state, action) {
       state.listPhones = action.payload;
     },
-    pushPhone(state, action) {
-      state.listPhones.push(action.payload);
-    },
-    editPhone(state, action) {
-      state.listPhones = state.listPhones.filter((p) => p.id !== action.payload.id);
-      state.listPhones.push(action.payload);
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchListPhonesThunk.pending, (state) => {
@@ -39,4 +32,4 @@ export const listSlice = createSlice({
   },
 });
 export default listSlice.reducer;
-export const { setListPhones, pushPhone, editPhone } = listSlice.actions;
+export const { setListPhones } = listSlice.actions;

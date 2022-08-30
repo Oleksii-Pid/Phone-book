@@ -6,7 +6,7 @@ export const findPhoneThunk = createAsyncThunk<
   TPhone,
   { id: string; listPhones: TPhone[] },
   { rejectValue: string }
->('fetch_phone', async ({ id, listPhones }, thunkAPI) => {
+>('find_phone', async ({ id, listPhones }, thunkAPI) => {
   try {
     await delay(500);
     const phone = listPhones.find((p: TPhone) => p.id === id);

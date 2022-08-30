@@ -37,9 +37,7 @@ function AddPhone() {
           <Form.Check
             type='switch'
             label='Active phone'
-            {...register('isActive', {
-              required: true,
-            })}
+            {...register('isActive', {})}
             placeholder='Required'
           />
         </Form.Group>

@@ -2,8 +2,9 @@ import { useAppSelector, useAppDispatch } from 'src/store';
 import { useCallback } from 'react';
 import { fetchListPhonesThunk } from 'src/api/fetch-list-phones';
 import { TPhone } from 'src/types';
-import { setListPhones, pushPhone, editPhone } from 'src/features/list-phones/redux/slice';
-import createNewPhone, { DataNewPhone } from 'src/api/craete-new-phone';
+import { setListPhones } from 'src/features/list-phones/redux/slice';
+import addNewPhone, { DataNewPhone } from 'src/api/add-new-phone';
+import editPhone from 'src/api/edit-phone';
 
 function useList() {
   const dispatch = useAppDispatch();
@@ -19,12 +20,19 @@ function useList() {
     },
     [dispatch],
   );
-  const saveNewPhone = useCallback((data: DataNewPhone) => {
-    dispatch(pushPhone(createNewPhone(data)));
-  }, []);
-  const editSelectPhone = useCallback((data: TPhone) => {
-    dispatch(editPhone(data));
-  }, []);
+  const saveNewPhone = useCallback(
+    (dataNewPhone: DataNewPhone) => {
+      saveChangedListPhones(addNewPhone({ dataNewPhone, listPhones: state.listPhones }));
+    },
+    [saveChangedListPhones],
+  );
+
+  const editSelectPhone = useCallback(
+    (dataEditPhone: TPhone) => {
+      saveChangedListPhones(editPhone({ dataEditPhone, listPhones: state.listPhones }));
+    },
+    [dispatch],
+  );
 
   return {
     ...state,

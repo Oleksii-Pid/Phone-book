@@ -1,6 +1,6 @@
 import GroupsPhones from './components/groups-phones';
 import ErrorPage from '../error';
-import useList from './hooks/use-list';
+import { useList } from 'src/hooks';
 import AddPhoneLink from './components/add-phone-link';
 
 function ListPhones() {

@@ -4,13 +4,16 @@ import { useCallback } from 'react';
 import { FormValues } from '../types';
 import { setToken, removeToken, setAuthReady } from 'src/features/auth/redux/slice';
 import { clearLocalStorage, STORAGE_KEYS } from 'src/utils/localStorage';
+import { useList } from 'src/hooks';
 
 export default function useAuth() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.auth);
+  const { saveChangedListPhones, fetchPhones } = useList();
 
   const onLogin = useCallback(
     (data: FormValues) => {
+      fetchPhones();
       dispatch(saveTokenThunk(data));
     },
     [dispatch],
@@ -20,6 +23,7 @@ export default function useAuth() {
   }, [dispatch]);
 
   const onLogout = useCallback(() => {
+    saveChangedListPhones([]);
     clearLocalStorage(STORAGE_KEYS.token);
     dispatch(removeToken());
   }, [dispatch]);
