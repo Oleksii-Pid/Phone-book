@@ -4,18 +4,20 @@ import { useList } from 'src/hooks';
 
 const List = () => {
   const { isLoading, error } = useList();
-  return !isLoading ? (
-    <>
-      <Helmet>{error ? <title>{error}</title> : <title>List</title>}</Helmet>
-      <ListPhones />
-    </>
-  ) : (
+  return (
     <>
       <Helmet>
-        <title>Loading...</title>
+        {!isLoading ? (
+          error ? (
+            <title>{error}</title>
+          ) : (
+            <title>List</title>
+          )
+        ) : (
+          <title>Loading...</title>
+        )}
       </Helmet>
-
-      <h1>Loading...</h1>
+      <ListPhones />
     </>
   );
 };

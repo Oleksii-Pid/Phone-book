@@ -1,37 +1,26 @@
-import Phone from 'src/features/phone/components/phone';
+import Phone from 'src/features/phone';
 import { Helmet } from 'react-helmet';
-import usePhone from 'src/features/phone/hooks/usePhone';
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import usePhone from 'src/features/phone/hooks/use-phone';
 
 const CurrentPhone = () => {
-  const { id } = useParams();
-  const { phone, fetchPhone, isLoading, error } = usePhone();
-  useEffect(() => {
-    if (id) {
-      fetchPhone(id);
-    }
-  }, [fetchPhone]);
-  return !isLoading ? (
+  const { phone, isLoading, error } = usePhone();
+
+  return (
     <>
       <Helmet>
-        {error ? (
-          <title>{error}</title>
+        {!isLoading ? (
+          !phone ? (
+            <title>{error}</title>
+          ) : (
+            <title>
+              {phone.name.first} {phone.name.last}
+            </title>
+          )
         ) : (
-          <title>
-            {phone.name.first} {phone.name.last}
-          </title>
+          <title>Loading...</title>
         )}
       </Helmet>
       <Phone />
-    </>
-  ) : (
-    <>
-      <Helmet>
-        <title>Loading...</title>
-      </Helmet>
-
-      <h1>Loading...</h1>
     </>
   );
 };

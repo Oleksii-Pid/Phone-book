@@ -2,16 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchListPhonesThunk } from 'src/api/fetch-list-phones';
 import { TPhone } from 'src/types';
 
-type PhoneState = {
-  listPhones: TPhone[];
-  isLoading: boolean;
-  error: undefined | string;
-};
-
-const initialState: PhoneState = {
-  listPhones: [],
+const initialState = {
+  listPhones: [] as TPhone[],
   isLoading: false,
-  error: '',
+  error: null as null | string | undefined,
 };
 
 export const listSlice = createSlice({
@@ -20,6 +14,9 @@ export const listSlice = createSlice({
   reducers: {
     setListPhones(state, action) {
       state.listPhones = action.payload;
+    },
+    pushPhone(state, action) {
+      state.listPhones.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -38,4 +35,4 @@ export const listSlice = createSlice({
   },
 });
 export default listSlice.reducer;
-export const { setListPhones } = listSlice.actions;
+export const { setListPhones, pushPhone } = listSlice.actions;

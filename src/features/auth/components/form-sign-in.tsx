@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import isEmail from 'validator/es/lib/isEmail';
 import {
   Form,
   FormControl,
@@ -34,7 +35,7 @@ function FormSingIn() {
               type='email'
               {...register('emailAddress', {
                 required: true,
-                pattern: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+                validate: isEmail,
               })}
             ></FormControl>
             <FormText style={{ color: 'red' }}>

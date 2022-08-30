@@ -2,7 +2,7 @@ import { Alert } from 'react-bootstrap';
 import ROUTES from 'src/routes/constants';
 
 type TError = {
-  nameError: string;
+  nameError: string | undefined | null;
 };
 
 function ErrorPage(prop: TError) {

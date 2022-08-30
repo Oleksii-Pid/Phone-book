@@ -1,20 +1,22 @@
 import { useAppSelector, useAppDispatch } from 'src/store';
 import { useCallback } from 'react';
-import { fetchPhoneThunk } from 'src/api/fetch-phone';
+import { findPhoneThunk } from 'src/api/find-phone';
+import { useList } from 'src/hooks';
 
 function usePhone() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.phone);
+  const { listPhones } = useList();
 
-  const fetchPhone = useCallback(
+  const findPhone = useCallback(
     (id: string) => {
-      dispatch(fetchPhoneThunk(id));
+      dispatch(findPhoneThunk({ id, listPhones }));
     },
     [dispatch],
   );
   return {
     ...state,
-    fetchPhone,
+    findPhone,
   };
 }
 export default usePhone;

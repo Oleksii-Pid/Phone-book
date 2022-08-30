@@ -1,20 +1,21 @@
-import ListGroup from 'react-bootstrap/ListGroup';
 import GroupsPhones from './components/groups-phones';
 import ErrorPage from '../error';
 import useList from './hooks/use-list';
 import AddPhoneLink from './components/add-phone-link';
 
 function ListPhones() {
-  const { error } = useList();
-  return !error ? (
-    <>
-      <AddPhoneLink />
-      <ListGroup>
+  const { error, isLoading } = useList();
+  return !isLoading ? (
+    !error ? (
+      <>
+        <AddPhoneLink />
         <GroupsPhones />
-      </ListGroup>
-    </>
+      </>
+    ) : (
+      <ErrorPage nameError={error} />
+    )
   ) : (
-    <ErrorPage nameError={error} />
+    <h1>Loading...</h1>
   );
 }
 
