@@ -1,12 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { saveTokenInLocalStorage } from 'src/utils/localStorage';
-import { UserData, LoginThunkParams } from 'src/features/auth/types';
+import { UserData, FormValues } from 'src/features/auth/types';
+import { delay } from 'src/utils/delay';
 
-export function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-export const saveTokenThunk = createAsyncThunk<UserData, LoginThunkParams, { rejectValue: string }>(
+export const saveTokenThunk = createAsyncThunk<UserData, FormValues, { rejectValue: string }>(
   'save_token',
   async ({ emailAddress }, thunkAPI) => {
     try {

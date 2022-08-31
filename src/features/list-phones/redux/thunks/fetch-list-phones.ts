@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { sortListPhones } from 'src/api/sort-phones';
+import { sortListPhones } from 'src/utils/sort-phones';
 import { TPhone } from 'src/types';
+import { getPhones } from 'src/api/get-phones';
 
 export const fetchListPhonesThunk = createAsyncThunk<
   TPhone[],
@@ -8,12 +9,7 @@ export const fetchListPhonesThunk = createAsyncThunk<
   { rejectValue: string | null }
 >('fetch_list_phones', async (_, thunkAPI) => {
   try {
-    const response = await fetch('phones.json');
-    if (!response.ok) {
-      return thunkAPI.rejectWithValue('Server error!');
-    }
-    const phones = await response.json();
-    return sortListPhones(phones);
+    return sortListPhones(await getPhones());
   } catch (error) {
     return thunkAPI.rejectWithValue('Page is not found!');
   }

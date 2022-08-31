@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from 'src/store';
-import { saveTokenThunk } from 'src/api/save-token';
+import { saveTokenThunk } from 'src/features/auth/redux/thunks/save-token';
 import { useCallback } from 'react';
 import { FormValues } from '../types';
 import { setToken, removeToken, setAuthReady } from 'src/features/auth/redux/slice';

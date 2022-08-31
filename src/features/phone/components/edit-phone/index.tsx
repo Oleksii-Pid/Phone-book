@@ -1,16 +1,16 @@
 import { useParams } from 'react-router';
 import SelectEditPhone from './components/select-edit-phone';
-import usePhone from '../phone/hooks/use-phone';
+import { usePhone } from 'src/hooks';
 import { useEffect } from 'react';
 
 function EditPhone() {
   const { id } = useParams();
-  const { findPhone, isLoading } = usePhone();
+  const { fetchPhone, isLoading } = usePhone();
   useEffect(() => {
     if (id) {
-      findPhone(id);
+      fetchPhone(id);
     }
-  }, [findPhone]);
+  }, [fetchPhone]);
   return !isLoading ? <SelectEditPhone /> : <h1>Loading...</h1>;
 }
 export default EditPhone;

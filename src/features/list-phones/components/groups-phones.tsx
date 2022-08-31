@@ -9,17 +9,19 @@ import { TPhone } from 'src/types';
 import { useMemo } from 'react';
 
 function GroupsPhones() {
-  const { listPhones, saveChangedListPhones } = useList();
+  const { listPhones, deletePhone } = useList();
   const nameGroups = useMemo(() => {
     const groups: string[] = [];
-    listPhones.map((phone) => {
+    listPhones.forEach((phone) => {
       if (!groups.includes(phone.name.first[0])) {
         groups.push(phone.name.first[0]);
       }
     });
     return groups;
   }, [listPhones]);
-
+  const onClick = (id: string) => () => {
+    deletePhone(id);
+  };
   return (
     <ListGroup>
       {nameGroups.map((group) => (
@@ -45,12 +47,7 @@ function GroupsPhones() {
                           <AiOutlineEdit />
                         </Link>
                       </Button>
-                      <Button
-                        onClick={() => {
-                          saveChangedListPhones(listPhones.filter((p) => p.id !== phone.id));
-                        }}
-                        variant='danger'
-                      >
+                      <Button onClick={onClick(phone.id)} variant='danger'>
                         <BsFillTrashFill />
                       </Button>
                     </ButtonGroup>

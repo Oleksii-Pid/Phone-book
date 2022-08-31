@@ -14,7 +14,6 @@ function Layout() {
       onTokenLogin(email);
       onAuthReady();
     }
-
     onAuthReady();
     fetchPhones();
   }, [onTokenLogin, onAuthReady, fetchPhones]);

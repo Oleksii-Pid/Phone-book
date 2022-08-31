@@ -1,4 +1,4 @@
-import ErrorPage from 'src/features/error';
+import ErrorPage from 'src/shared/error';
 import { usePhone, useList } from 'src/hooks';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -11,7 +11,7 @@ import ROUTES from 'src/routes/constants';
 function SelectEditPhone() {
   const { phone, error } = usePhone();
   const navigate = useNavigate();
-  const { editSelectPhone } = useList();
+  const { editPhone } = useList();
 
   if (phone) {
     const {
@@ -20,24 +20,10 @@ function SelectEditPhone() {
       handleSubmit,
     } = useForm<TPhone>({
       mode: 'onChange',
-      defaultValues: {
-        id: phone.id,
-        isActive: phone.isActive,
-        age: phone.age,
-        name: {
-          first: phone.name.first,
-          last: phone.name.last,
-        },
-        company: phone.company,
-        email: phone.email,
-        phone: phone.phone,
-        address: phone.address,
-        registered: phone.registered,
-      },
+      defaultValues: phone,
     });
     const onSubmit: SubmitHandler<TPhone> = (phoneData) => {
-      editSelectPhone(phoneData);
-      navigate(ROUTES.main);
+      editPhone(phoneData, () => navigate(ROUTES.main));
     };
     return (
       <Container style={{ maxWidth: '25rem', marginTop: '1rem' }}>

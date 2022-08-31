@@ -5,12 +5,12 @@ import { useEffect } from 'react';
 
 function Phone() {
   const { id } = useParams();
-  const { findPhone, isLoading } = usePhone();
+  const { fetchPhone, isLoading } = usePhone();
   useEffect(() => {
     if (id) {
-      findPhone(id);
+      fetchPhone(id);
     }
-  }, [findPhone]);
+  }, [fetchPhone]);
   return !isLoading ? <SelectPhone /> : <h1>Loading...</h1>;
 }
 export default Phone;

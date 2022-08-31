@@ -9,7 +9,7 @@ import ROUTES from 'src/routes/constants';
 
 function AddPhone() {
   const navigate = useNavigate();
-  const { saveNewPhone } = useList();
+  const { addPhone } = useList();
   const {
     register,
     formState: { errors, isValid },
@@ -27,8 +27,7 @@ function AddPhone() {
 
   const onSubmit: SubmitHandler<FormValuesPhone> = (phoneData) => {
     reset();
-    saveNewPhone(phoneData);
-    navigate(ROUTES.main);
+    addPhone(phoneData, () => navigate(ROUTES.main));
   };
   return (
     <Container style={{ maxWidth: '25rem', marginTop: '1rem' }}>

@@ -1,15 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import isEmail from 'validator/es/lib/isEmail';
-import {
-  Form,
-  FormControl,
-  FormLabel,
-  FormGroup,
-  Container,
-  Button,
-  FormText,
-  Spinner,
-} from 'react-bootstrap';
+import { Form, Container, Button, Spinner } from 'react-bootstrap';
 import { useAuth } from 'src/hooks';
 import { FormValues } from '../types';
 
@@ -29,37 +20,37 @@ function FormSingIn() {
     <>
       <Container style={{ maxWidth: '21rem', marginTop: '2rem' }}>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <FormGroup>
-            <FormLabel>Email address:</FormLabel>
-            <FormControl
+          <Form.Group>
+            <Form.Label>Email address:</Form.Label>
+            <Form.Control
               type='email'
               {...register('emailAddress', {
                 required: true,
                 validate: isEmail,
               })}
-            ></FormControl>
-            <FormText style={{ color: 'red' }}>
+            ></Form.Control>
+            <Form.Text style={{ color: 'red' }}>
               {errors?.emailAddress && <p>Must be filled.Invalid email.</p>}
-            </FormText>
-          </FormGroup>
-          <FormGroup>
-            <FormLabel>Password:</FormLabel>
-            <FormControl
+            </Form.Text>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Password:</Form.Label>
+            <Form.Control
               type='password'
               {...register('password', {
                 required: true,
                 pattern: /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
               })}
-            ></FormControl>
-            <FormText style={{ color: 'red' }}>
+            ></Form.Control>
+            <Form.Text style={{ color: 'red' }}>
               {errors?.password && (
                 <p>
                   Must be filled.Minimum 8 symbols. Necessarily one number, one uppercase letter,
                   one lowercase letter.
                 </p>
               )}
-            </FormText>
-          </FormGroup>
+            </Form.Text>
+          </Form.Group>
           <Button type='submit' disabled={!isValid} variant='primary' style={{ marginTop: '5px' }}>
             {isLoading && (
               <Spinner as='span' animation='border' size='sm' role='status' aria-hidden='true' />

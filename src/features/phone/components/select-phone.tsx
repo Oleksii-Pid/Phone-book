@@ -1,5 +1,5 @@
 import { Container, Table } from 'react-bootstrap';
-import ErrorPage from 'src/features/error';
+import ErrorPage from 'src/shared/error';
 import { usePhone } from 'src/hooks';
 
 function SelectPhone() {

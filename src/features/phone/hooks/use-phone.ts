@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from 'src/store';
 import { useCallback } from 'react';
-import { findPhoneThunk } from 'src/api/find-phone';
+import { fetchPhoneThunk } from 'src/features/phone/redux/thunks/fetch-phone';
 import { useList } from 'src/hooks';
 
 function usePhone() {
@@ -8,15 +8,15 @@ function usePhone() {
   const state = useAppSelector((state) => state.phone);
   const { listPhones } = useList();
 
-  const findPhone = useCallback(
+  const fetchPhone = useCallback(
     (id: string) => {
-      dispatch(findPhoneThunk({ id, listPhones }));
+      dispatch(fetchPhoneThunk({ id, listPhones }));
     },
     [dispatch],
   );
   return {
     ...state,
-    findPhone,
+    fetchPhone,
   };
 }
 export default usePhone;

@@ -6,5 +6,3 @@ export type FormValues = {
 export type UserData = {
   emailAddress: string;
 };
-
-export type LoginThunkParams = FormValues;

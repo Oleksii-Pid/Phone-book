@@ -1,10 +1,11 @@
 import { useAppSelector, useAppDispatch } from 'src/store';
 import { useCallback } from 'react';
-import { fetchListPhonesThunk } from 'src/api/fetch-list-phones';
+import { fetchListPhonesThunk } from 'src/features/list-phones/redux/thunks/fetch-list-phones';
 import { TPhone } from 'src/types';
 import { setListPhones } from 'src/features/list-phones/redux/slice';
-import addNewPhone, { DataNewPhone } from 'src/api/add-new-phone';
-import editPhone from 'src/api/edit-phone';
+import { addPhoneThunk } from 'src/features/phone/redux/thunks/add-phone';
+import { editPhoneThunk } from 'src/features/phone/redux/thunks/edit-phone';
+import { deletePhoneThunk } from 'src/features/phone/redux/thunks/delete-phone';
 
 function useList() {
   const dispatch = useAppDispatch();
@@ -20,16 +21,23 @@ function useList() {
     },
     [dispatch],
   );
-  const saveNewPhone = useCallback(
-    (dataNewPhone: DataNewPhone) => {
-      saveChangedListPhones(addNewPhone({ dataNewPhone, listPhones: state.listPhones }));
+  const addPhone = useCallback(
+    (dataPhone: Omit<TPhone, 'id'>, callback: () => void) => {
+      dispatch(addPhoneThunk({ dataPhone, callback }));
     },
-    [saveChangedListPhones],
+    [dispatch],
   );
 
-  const editSelectPhone = useCallback(
-    (dataEditPhone: TPhone) => {
-      saveChangedListPhones(editPhone({ dataEditPhone, listPhones: state.listPhones }));
+  const editPhone = useCallback(
+    (dataPhone: TPhone, callback: () => void) => {
+      dispatch(editPhoneThunk({ dataPhone, callback }));
+    },
+    [dispatch],
+  );
+
+  const deletePhone = useCallback(
+    (id: string) => {
+      dispatch(deletePhoneThunk({ id }));
     },
     [dispatch],
   );
@@ -38,8 +46,9 @@ function useList() {
     ...state,
     fetchPhones,
     saveChangedListPhones,
-    saveNewPhone,
-    editSelectPhone,
+    addPhone,
+    editPhone,
+    deletePhone,
   };
 }
 export default useList;

@@ -1,4 +1,4 @@
-import EditPhone from 'src/features/edit-phone';
+import EditPhone from 'src/features/phone/components/edit-phone';
 import { Helmet } from 'react-helmet';
 import { usePhone } from 'src/hooks';
 

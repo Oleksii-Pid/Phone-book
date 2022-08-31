@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { saveTokenThunk } from 'src/api/save-token';
+import { saveTokenThunk } from 'src/features/auth/redux/thunks/save-token';
 
 const initialState = {
   isAuth: false,
   isLoading: false,
   isAuthReady: false,
   email: '',
-  error: '' as undefined | string,
+  error: null as undefined | string | null,
 };
 
 export type AuthState = typeof initialState;
