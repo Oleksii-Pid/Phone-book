@@ -27,7 +27,7 @@ function FormSingIn() {
 
   return (
     <>
-      <Container style={{ width: '18rem' }}>
+      <Container style={{ maxWidth: '21rem', marginTop: '2rem' }}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormGroup>
             <FormLabel>Email address:</FormLabel>
