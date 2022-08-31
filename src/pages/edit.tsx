@@ -1,11 +1,22 @@
 import EditPhone from 'src/features/edit-phone';
 import { Helmet } from 'react-helmet';
+import { usePhone } from 'src/hooks';
 
 const Edit = () => {
+  const { phone, isLoading, error } = usePhone();
+
   return (
     <>
       <Helmet>
-        <title>Log In</title>
+        {!isLoading ? (
+          !phone ? (
+            <title>{error}</title>
+          ) : (
+            <title>Edit</title>
+          )
+        ) : (
+          <title>Loading...</title>
+        )}
       </Helmet>
       <EditPhone />
     </>
