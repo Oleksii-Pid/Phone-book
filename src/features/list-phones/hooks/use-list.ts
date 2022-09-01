@@ -1,11 +1,9 @@
 import { useAppSelector, useAppDispatch } from 'src/store';
 import { useCallback } from 'react';
-import { fetchListPhonesThunk } from 'src/features/list-phones/redux/thunks/fetch-list-phones';
+import { fetchListPhonesThunk } from 'src/features/list-phones/redux/thunks';
 import { TPhone } from 'src/types';
 import { setListPhones } from 'src/features/list-phones/redux/slice';
-import { addPhoneThunk } from 'src/features/phone/redux/thunks/add-phone';
-import { editPhoneThunk } from 'src/features/phone/redux/thunks/edit-phone';
-import { deletePhoneThunk } from 'src/features/phone/redux/thunks/delete-phone';
+import { addPhoneThunk, editPhoneThunk, deletePhoneThunk } from 'src/features/phone/redux/thunks';
 
 function useList() {
   const dispatch = useAppDispatch();

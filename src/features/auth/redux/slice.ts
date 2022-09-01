@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { saveTokenThunk } from 'src/features/auth/redux/thunks/save-token';
+import { saveTokenThunk } from 'src/features/auth/redux/thunks';
 
 const initialState = {
   isAuth: false,

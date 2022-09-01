@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import SelectPhone from 'src/features/phone/components/select-phone';
-import usePhone from './hooks/use-phone';
+import { usePhone } from 'src/hooks';
 import { useEffect } from 'react';
 
 function Phone() {

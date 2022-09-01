@@ -1,7 +1,7 @@
-import { useParams } from 'react-router';
-import SelectEditPhone from './components/select-edit-phone';
 import { usePhone } from 'src/hooks';
+import { useParams } from 'react-router';
 import { useEffect } from 'react';
+import EditPhoneForm from 'src/features/phone/components/edit_phone_form';
 
 function EditPhone() {
   const { id } = useParams();
@@ -11,6 +11,7 @@ function EditPhone() {
       fetchPhone(id);
     }
   }, [fetchPhone]);
-  return !isLoading ? <SelectEditPhone /> : <h1>Loading...</h1>;
+
+  return !isLoading ? <EditPhoneForm /> : <h1>Loading...</h1>;
 }
 export default EditPhone;

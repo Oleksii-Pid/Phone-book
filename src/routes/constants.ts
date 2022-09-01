@@ -4,7 +4,7 @@ const ROUTES = {
   add: '/add',
   another: '/*',
   dynamic: {
-    edit: (id = ':id') => `/edit/${id}`,
+    edit: { id: (id = ':id') => `/edit/${id}` },
     id: (id = ':id') => `/${id}`,
   },
 };

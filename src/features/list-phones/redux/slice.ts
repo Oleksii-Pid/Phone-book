@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchListPhonesThunk } from 'src/features/list-phones/redux/thunks/fetch-list-phones';
+import { fetchListPhonesThunk } from 'src/features/list-phones/redux/thunks';
 import { TPhone } from 'src/types';
-import { addPhoneThunk } from 'src/features/phone/redux/thunks/add-phone';
-import { editPhoneThunk } from 'src/features/phone/redux/thunks/edit-phone';
-import { deletePhoneThunk } from 'src/features/phone/redux/thunks/delete-phone';
+import { addPhoneThunk, editPhoneThunk, deletePhoneThunk } from 'src/features/phone/redux/thunks';
 import { sortListPhones } from 'src/utils/sort-phones';
 
 const initialState = {
@@ -48,7 +46,10 @@ export const listSlice = createSlice({
       state.error = '';
     });
     builder.addCase(editPhoneThunk.fulfilled, (state, { payload }) => {
-      state.listPhones = sortListPhones([...state.listPhones, payload]);
+      state.listPhones = sortListPhones([
+        ...state.listPhones.filter((p) => p.id !== payload.id),
+        payload,
+      ]);
     });
     builder.addCase(editPhoneThunk.rejected, (state, action) => {
       state.error = action.payload;

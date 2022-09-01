@@ -11,6 +11,7 @@ export const fetchListPhonesThunk = createAsyncThunk<
   try {
     return sortListPhones(await getPhones());
   } catch (error) {
+    console.dir(error);
     return thunkAPI.rejectWithValue('Page is not found!');
   }
 });

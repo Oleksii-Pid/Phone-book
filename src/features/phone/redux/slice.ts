@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { TPhone } from 'src/types';
-import { fetchPhoneThunk } from 'src/features/phone/redux/thunks/fetch-phone';
+import { fetchPhoneThunk } from 'src/features/phone/redux/thunks';
 
 const initialState = {
   phone: null as null | TPhone,
@@ -12,7 +12,14 @@ const initialState = {
 export const phoneSlice = createSlice({
   name: 'phone',
   initialState,
-  reducers: {},
+  reducers: {
+    setInitialState(state) {
+      (state.phone = null),
+        (state.error = null),
+        (state.isLoading = false),
+        (state.isErrorCheck = false);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchPhoneThunk.pending, (state) => {
       state.isLoading = true;
@@ -30,3 +37,4 @@ export const phoneSlice = createSlice({
   },
 });
 export default phoneSlice.reducer;
+export const { setInitialState } = phoneSlice.actions;
