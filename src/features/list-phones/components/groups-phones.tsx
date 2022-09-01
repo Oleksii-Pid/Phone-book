@@ -19,6 +19,7 @@ function GroupsPhones() {
     });
     return groups;
   }, [listPhones]);
+
   const onClick = (id: string) => () => {
     deletePhone(id);
   };
