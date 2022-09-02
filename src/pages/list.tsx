@@ -1,6 +1,8 @@
-import ListPhones from 'src/features/list-phones';
 import { Helmet } from 'react-helmet';
 import { useList } from 'src/hooks';
+import { lazy } from 'react';
+import { trackPromise } from 'react-promise-tracker';
+const ListPhones = lazy(() => trackPromise(import('src/features/list-phones')));
 
 const List = () => {
   const { isLoading, error } = useList();

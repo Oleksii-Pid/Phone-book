@@ -43,7 +43,7 @@ function GroupsPhones() {
                     <Link to={ROUTES.dynamic.id(`${phone.id}`)}>{phone.name.first}</Link>
                     <ButtonGroup>
                       <Button variant='link' className='mr-10'>
-                        <Link to={ROUTES.dynamic.edit.id(`${phone.id}`)}>
+                        <Link to={ROUTES.dynamic.edit(`${phone.id}`)}>
                           {' '}
                           <AiOutlineEdit />
                         </Link>

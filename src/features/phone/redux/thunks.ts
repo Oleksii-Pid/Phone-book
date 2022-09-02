@@ -69,7 +69,6 @@ export const fetchPhoneThunk = createAsyncThunk<
 >('fetch_phone', async ({ id, listPhones }, thunkAPI) => {
   try {
     const phone = findPhone(await getPhones(), id) || findPhone(listPhones, id);
-    console.log('phone', phone);
     if (phone) {
       return phone;
     }
