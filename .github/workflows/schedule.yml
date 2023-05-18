@@ -1,0 +1,12 @@
+name: New policy cron job
+on:
+  schedule:
+    - cron: '*/6 * * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: New policy cron job
+        run: |
+          curl --request GET \
+          --url 'http://localhost:3000/api/jobs/search_new_policy' \
