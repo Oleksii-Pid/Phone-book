@@ -9,4 +9,4 @@ jobs:
       - name: New policy cron job
         run: |
           curl --request GET \
-          --url 'http://localhost:3000/api/jobs/search_new_policy' \
+          --url 'https://sles-api-logic.d38kjhy28eygf8.amplifyapp.com/api/jobs/search_new_policy' \
